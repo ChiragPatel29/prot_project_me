@@ -1,7 +1,20 @@
 <!--This is the template that will be used in new/edit screens. It should be in <form></form> tag. The name of the form should be matching the name of your API route, prefixed with 'froms.' and suffixed by 'Form'. e.g. in this case, it would be 'forms.tasksForm'-->
-
-Dynamic Example
-<form name="forms.{{resourceName}}Form" id="forms.{{resourceName}}Form">
+<!-- <div ng-if="(data.single.role == 'admin' && currentUser.role !='admin')">
+	<div class="middle-center-heading">{{M.UNAUTHORIZED_AREA}}</div>
+	<style type="text/css">
+		.middle-center-heading{
+				left: 50%;
+				position: absolute;
+				top: 50%;
+				margin-left: -300px;
+				font-size: xx-large;
+		}
+	</style>
+  </div>
+  <div ng-if="(data.single.role == 'admin' && currentUser.role =='admin')">
+	
+  </div> -->
+  <form name="forms.{{resourceName}}Form" id="forms.{{resourceName}}Form" ng-if="(data.single.role == 'admin' && currentUser.role =='admin')">
 	<div ng-repeat="i in data.singleKeys">
      	<div class="form-group row"  ng-if="!(['bool', 'fkey', 'date', 'datetime', 'textarea'].indexOf(data.singleKeysInfo[i].type) > -1) && i != 'id' && !(i.endsWith('_file') || i.endsWith('_image') || i.endsWith('_photo') || i.endsWith('_video') || i.endsWith('_sound') || i.endsWith('_music') || i.endsWith('_audio') || i.endsWith('_attachment') || i.endsWith('file') || i.endsWith('attachment') || i.endsWith('image')) ">
 			<label for="{{resourceName}}_{{i}}" class="col-md-4 col-form-label text-md-right">{{data.singleKeysInfo[i].title}}: <span ng-if="data.singleKeysInfo[i].required" class="small col-red">*</span></label>
@@ -90,7 +103,19 @@ Dynamic Example
      	</div>		
 	</div>
 </form>
-
+<div ng-if="(data.single.role == 'admin' && currentUser.role !='admin')">
+	<div class="middle-center-heading">{{M.UNAUTHORIZED_AREA}}</div>
+	<style type="text/css">
+		.middle-center-heading{
+				left: 50%;
+				position: absolute;
+				top: 50%;
+				margin-left: -300px;
+				font-size: xx-large;
+		}
+	</style>
+  </div>
+  
 <!--Static Example-->
 
 <!--<form name="forms.user_storysForm" id="forms.user_storysForm">-->
